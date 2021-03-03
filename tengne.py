@@ -62,9 +62,6 @@ def draw(img, check, k):
             if key == ord('N') or key == ord('n'):
                 back = 0
                 break
-            if key == ord('T') or key == ord('t'):
-                back = 1
-                break
             if key == ord('O') or key == ord('o'):
                 back = 2
                 break
@@ -79,9 +76,6 @@ def draw(img, check, k):
             key = cv2.waitKey(0)
             if key == ord('N') or key == ord('n'):
                 back = 0
-                break
-            if key == ord('T') or key == ord('t'):
-                back = 1
                 break
             if key == ord('O') or key == ord('o'):
                 back = 2
