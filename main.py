@@ -87,10 +87,10 @@ while True:
     #     print('Neste bilde...')
     #     chack = False
 
-    print("Kalkulerer... ")
+    print("Analyserer bildene... ")
     index = index_start
     while index < len(_list):
-        print(f'{index-index_start+1}/{len(_list)-index_start}')
+        print(f'Ferdig med bilde {index-index_start+1}/{len(_list)-index_start}')
         k = _list[index]
         v = img_img[k]
         try:
@@ -105,9 +105,9 @@ while True:
         img_list.update({k: [koor, orig, nervehule, punkt_c, chack]})
         chack = False
         index += 1
-    print("")
-    print("Et bilde i et nytt vindu vil dukke opp. Du må trykk på NERVEHULET med musen også mellomroms knapen.")
-    print("Om du gjort feil eller bommet kan du trykke på O for å gjøre det om igjen. For å gå til neste bilde trykk N.")
+    print("BRUKSANVISNING")
+    print("Et bilde vil åpnes i et nytt vindu. Du må trykk på NERVEHULET med musen for å markere det om det ikke er markert allered")
+    print("Om du gjort feil eller bommet kan du trykke på O for å marker på nytt. For å gå til neste bilde trykk N.")
     print("")
     index = index_start
     while index < len(_list):
@@ -140,7 +140,6 @@ while True:
         art_list.update({k: [art, prosent]})
         print(f'Arten er {art}')
         print(f'Sannsylighet for Isodon: {prosent*100}%')
-        print('Neste bilde...')
         print('')
         chack = False
     print('Ferdig, lagrer all dataen i en fil')

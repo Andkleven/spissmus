@@ -49,10 +49,11 @@ def draw(img, check, k):
         if event == cv2.EVENT_LBUTTONDOWN:
             cv2.circle(img, (x, y), 3, (0,255,0), -1)
             koor.append([y,x])
+            cv2.destroyAllWindows()
 
-    cv2.setMouseCallback(windowName, draw_circle)
     if check:
         while(True):
+            cv2.setMouseCallback(windowName, draw_circle)
             t += 1
             cv2.imshow(windowName, img)  
             koor_dict.update({t: koor})
@@ -73,6 +74,7 @@ def draw(img, check, k):
              
     else:
         while(True):
+            cv2.setMouseCallback(windowName, draw_circle)
             cv2.imshow(windowName, img)  
             key = cv2.waitKey(0)
             if key == ord('N') or key == ord('n'):
