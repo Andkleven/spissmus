@@ -24,9 +24,7 @@ while True:
     window = sg.Window('Sorex', layout,size=(500, 100))
     event, values = window.Read()
     text = values["Browse"]
-    print("jaja")
     window.close()
-    print("jaja")
     if "'" in text: 
         path = text.split("'", 1)[1]
         path = path.split("'", 1)[0]
@@ -46,64 +44,7 @@ while True:
 
     index_start = 0
     _list = [key for key in img_img.keys()]
-    # start = input('Hvilken rute vil du start i, trykk enter om du vil start på nummer en:  ')
-    # if not start.isnumeric() or int(start) < 1: start = 1
-    # try:
-    #     index_start = _list.index(int(start))
-    # except ValueError:
-    #     index_start = 1   
-    # except:
-    #     print('kontakt Anders')
-    #     start = input('Var ikke noe bilde i ruten, prøv igjen:  ')
-    # index = index_start
-    # while index < len(_list):
-    #     k = _list[index]
-    #     v = img_img[k]
-       
-    #     try:
-    #         koor, orig, nervehule, punkt_c, rent_bilde = image(v)
-    #         chack = True
 
-    #     except:
-    #         orig, orig1, orig2, first = kjeve(v)
-    #         first = first(orig1,orig2)
-    #         orig = mirror(orig, first)
-    #         print('Nummer {} går ikke'.format(k))
-    #         chack = False
-    #     print("Et bilde i et nytt vindu vil dukke opp. Du må trykk på NERVEHULET med musen også mellomroms knapen. Om du gjort feil eller bommet kan du trykke på O for å gjøre det om igjen.For å gå til neste bilde trykk N. om du vil gå tilbake til forige bilde trykk T")
-    #     print(koor)
-    #     if chack:
-    #         koor, nervehule, back = draw_img(orig, koor, nervehule, k)
-    #         while back == 2:
-    #             koor, nervehule, back = draw_img(orig, koor, nervehule, k)
-    #         if back == 0: index += 1 
-    #         else: 
-    #             index -= 1
-    #             continue
-    #     else: 
-    #         koor, _, q, back = draw(orig, False, k)
-    #         while back == 2:
-    #             koor, _, q, back = draw(orig, False, k)
-    #         print(koor)
-    #         if back == 0: index += 1 
-    #         else: 
-    #             index -= 1
-    #             continue
-    #         if len(koor) <= 5:
-    #             index += 1
-    #             continue
-    #         koor, punkt_c = finn_punkt(koor)
-    #         orig = draw_multi(koor, orig)
-    #         nervehule = True
-    #     img_list.update({k: [koor, orig, nervehule, punkt_c]})
-    #     art, img, measur, prosent = run(img_list[k])
-    #     art_list.update({k: [art, prosent]})
-    #     print(art, str(prosent*100)+'%')
-    #     print('Neste bilde...')
-    #     chack = False
-
-    print("Analyserer bildene... ")
-    index = index_start
     while index < len(_list):
         print(f'Ferdig med bilde {index-index_start+1}/{len(_list)-index_start}')
         k = _list[index]
