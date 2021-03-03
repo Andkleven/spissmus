@@ -15,16 +15,21 @@ def plot(image,k):
         cv2.destroyAllWindows()
 
 while True:   
-    text = input('Dra bilde fra mapen sin hit:  ')
+    text = input('Dra bilde(må være jpg) hit og trykk enter:  ')
     while len(text)<4:
-        text = input('Dra bilde fra mapen sin hit:  ')
+        text = input('Dra bilde(må være jpg) hit og trykk enter:  ')
     if "'" in text: 
         path = text.split("'", 1)[1]
         path = path.split("'", 1)[0]
     if '"' in text: 
         path = text.split('"', 1)[1]
         path = path.split('"', 1)[0]
-    img = cv2.imread(path) 
+    try:
+        img = cv2.imread(path)
+    except:
+        print("")
+        text = input('Dra bilde hit også trykk enter:  ')
+     
     img_img = split(img)
     art_list = {}
     img_list = {}
@@ -106,8 +111,10 @@ while True:
         chack = False
         index += 1
     print("BRUKSANVISNING")
-    print("Et bilde vil åpnes i et nytt vindu. Du må trykk på NERVEHULET med musen for å markere det om det ikke er markert allered")
-    print("Om du gjort feil eller bommet kan du trykke på O for å marker på nytt. For å gå til neste bilde trykk N.")
+    print("Bildet vil åpnes i et nytt vindu")
+    print("Du må trykke på NERVEHULLET med musen for å markere om det ikke er markert allerede.")
+    print("Trykk deretter 'n' for å gå videre til neste bilde.")
+    print("Om du markert feil eller bommet kan du trykke på 'o' for å markere på nytt.")
     print("")
     index = index_start
     while index < len(_list):
@@ -138,8 +145,7 @@ while True:
         img_list.update({k: [koor, orig, nervehule, punkt_c, chack]})
         art, img, measur, prosent = run(img_list[k])
         art_list.update({k: [art, prosent]})
-        print(f'Arten er {art}')
-        print(f'Sannsylighet for Isodon: {prosent*100}%')
+        print(f'Bilde {index} er arten {art} med sannsylighet for Isodon: {prosent*100}%')
         print('')
         chack = False
     print('Ferdig, lagrer all dataen i en fil')
