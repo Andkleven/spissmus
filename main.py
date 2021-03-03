@@ -44,7 +44,7 @@ while True:
 
     index_start = 0
     _list = [key for key in img_img.keys()]
-
+    index = index_start
     while index < len(_list):
         print(f'Ferdig med bilde {index-index_start+1}/{len(_list)-index_start}')
         k = _list[index]
