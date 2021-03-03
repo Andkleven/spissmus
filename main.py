@@ -7,6 +7,7 @@ import csv
 import pathlib
 import uuid
 from pathlib import Path
+import PySimpleGUI as sg
 
 def plot(image,k):
     cv2.imshow('Bilde '+str(k), image)
@@ -14,21 +15,30 @@ def plot(image,k):
     if key == 27 or key == 32:
         cv2.destroyAllWindows()
 
-while True:   
-    text = input('Dra bilde(må være jpg) hit og trykk enter:  ')
-    while len(text)<4:
-        text = input('Dra bilde(må være jpg) hit og trykk enter:  ')
+sg.theme('Dark Blue 3')  # please make your creations colorful
+layout = [  [sg.Text('Velg fil(må være jpg) og trykk ok')],
+            [sg.Input(), sg.FileBrowse()], 
+            [sg.OK()]
+            ] 
+while True:
+    window = sg.Window('Sorex', layout,size=(500, 100))
+    event, values = window.Read()
+    text = values["Browse"]
+    print("jaja")
+    window.close()
+    print("jaja")
     if "'" in text: 
         path = text.split("'", 1)[1]
         path = path.split("'", 1)[0]
-    if '"' in text: 
+    elif '"' in text: 
         path = text.split('"', 1)[1]
         path = path.split('"', 1)[0]
+    else:
+        path = text
     try:
         img = cv2.imread(path)
-    except:
-        print("")
-        text = input('Dra bilde hit også trykk enter:  ')
+    except Exception as e:
+        print(e)
      
     img_img = split(img)
     art_list = {}
